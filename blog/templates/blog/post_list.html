@@ -1,26 +1,22 @@
+{% load staticfiles %}
 <html>
-	<head>
-		<title>Gerrit's blog</title>
-	</head>
-	<body>
-		<div>
-			<strong>Gerrit's blog</strong>
-		</div>	
-		
-		<div>
-			<p>published: 28.03.2017, 13:37</p>
-			<h2><a href="">Why Saber is worst girl</a></h2>
-		</div>
-	
-		<div>
-			<p>published: 28.03.2017, 08:15</p>
-			<h2><a href="">Dark Souls 2, the best game of all time?</a></h2>
-		</div>
-		
-		<div>
-			<p>published: 25.03.2017, 10:15</p>
-			<h2><a href="">Berserk 2016 Season 2: hopes and expectations</a></h2>
-		</div>
-		
-	</body>
+    <head>
+        <title>Django Girls blog</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    </head>
+    <body>
+        <div>
+            <h1><a href="/">Gerrit's blog</a></h1>
+        </div>
+
+        {% for post in posts %}
+            <div>
+                <p>published: {{ post.published_date }}</p>
+                <h1><a href="">{{ post.title }}</a></h1>
+                <p>{{ post.text|linebreaksbr }}</p>
+            </div>
+        {% endfor %}
+    </body>
 </html>
